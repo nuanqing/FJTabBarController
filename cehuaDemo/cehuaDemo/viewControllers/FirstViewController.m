@@ -25,7 +25,7 @@
 - (void)setupUI{
     UIButton *btn = [UIButton new];
     btn.frame = CGRectMake((FJWidth-60)/2, (FJHeight-60)/2, 60, 60);
-    btn.backgroundColor = FJColor(155, 155, 155);
+    btn.backgroundColor = FJColor(155, 155, 155, 1);
     [btn setTitle:@"click" forState:UIControlStateNormal];
     [btn addTarget:self action:@selector(click) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:btn];

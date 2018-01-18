@@ -33,13 +33,13 @@
 }
 
 - (void)click:(UIButton *)btn{
-   
-    if (!btn.selected) {
+    FJMainViewController *fvc = [self mainViewController];
+    if (!fvc.isOpendLeftVC) {
         [[self mainViewController] showLeftVC];
     }else{
         [[self mainViewController] closeLeftVC];
     }
-     btn.selected = !btn.selected;
+    
 }
 
 

@@ -22,6 +22,9 @@
 		FA3FE86120050266009BD9D5 /* FJTabBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = FA3FE86020050266009BD9D5 /* FJTabBarView.m */; };
 		FA3FE868200709C9009BD9D5 /* FJMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA3FE867200709C9009BD9D5 /* FJMainViewController.m */; };
 		FA3FE86B200709D8009BD9D5 /* FJLeftViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA3FE86A200709D8009BD9D5 /* FJLeftViewController.m */; };
+		FA48697A20103D1200EFEB9D /* UIBarButtonItem+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = FA48697820103D1200EFEB9D /* UIBarButtonItem+Extension.m */; };
+		FA48697D20103DDE00EFEB9D /* UIView+frame.m in Sources */ = {isa = PBXBuildFile; fileRef = FA48697C20103DDE00EFEB9D /* UIView+frame.m */; };
+		FA48698020103EFE00EFEB9D /* UIFont+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = FA48697E20103EFE00EFEB9D /* UIFont+Extension.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -75,6 +78,12 @@
 		FA3FE867200709C9009BD9D5 /* FJMainViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FJMainViewController.m; sourceTree = "<group>"; };
 		FA3FE869200709D8009BD9D5 /* FJLeftViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FJLeftViewController.h; sourceTree = "<group>"; };
 		FA3FE86A200709D8009BD9D5 /* FJLeftViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FJLeftViewController.m; sourceTree = "<group>"; };
+		FA48697820103D1200EFEB9D /* UIBarButtonItem+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIBarButtonItem+Extension.m"; sourceTree = "<group>"; };
+		FA48697920103D1200EFEB9D /* UIBarButtonItem+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIBarButtonItem+Extension.h"; sourceTree = "<group>"; };
+		FA48697B20103DDE00EFEB9D /* UIView+frame.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIView+frame.h"; sourceTree = "<group>"; };
+		FA48697C20103DDE00EFEB9D /* UIView+frame.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIView+frame.m"; sourceTree = "<group>"; };
+		FA48697E20103EFE00EFEB9D /* UIFont+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIFont+Extension.m"; sourceTree = "<group>"; };
+		FA48697F20103EFE00EFEB9D /* UIFont+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIFont+Extension.h"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -125,6 +134,7 @@
 		838F866D2003599400E63475 /* cehuaDemo */ = {
 			isa = PBXGroup;
 			children = (
+				FA48697720103CF000EFEB9D /* Category */,
 				FA3FE8652007099C009BD9D5 /* leftVC */,
 				FA3FE86420070980009BD9D5 /* mainVC */,
 				FA3FE8632007090F009BD9D5 /* navAndTabBarVC */,
@@ -203,6 +213,19 @@
 				FA3FE86A200709D8009BD9D5 /* FJLeftViewController.m */,
 			);
 			path = leftVC;
+			sourceTree = "<group>";
+		};
+		FA48697720103CF000EFEB9D /* Category */ = {
+			isa = PBXGroup;
+			children = (
+				FA48697920103D1200EFEB9D /* UIBarButtonItem+Extension.h */,
+				FA48697820103D1200EFEB9D /* UIBarButtonItem+Extension.m */,
+				FA48697F20103EFE00EFEB9D /* UIFont+Extension.h */,
+				FA48697E20103EFE00EFEB9D /* UIFont+Extension.m */,
+				FA48697B20103DDE00EFEB9D /* UIView+frame.h */,
+				FA48697C20103DDE00EFEB9D /* UIView+frame.m */,
+			);
+			path = Category;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -340,12 +363,15 @@
 				FA3FE86120050266009BD9D5 /* FJTabBarView.m in Sources */,
 				838F86A820035A5500E63475 /* SecondViewController.m in Sources */,
 				838F86B120035BBF00E63475 /* FJTabBar.m in Sources */,
+				FA48697D20103DDE00EFEB9D /* UIView+frame.m in Sources */,
 				838F86B420036B8500E63475 /* FJNavgationViewController.m in Sources */,
 				838F867E2003599400E63475 /* main.m in Sources */,
 				838F86A520035A3E00E63475 /* FirstViewController.m in Sources */,
+				FA48698020103EFE00EFEB9D /* UIFont+Extension.m in Sources */,
 				FA3FE86B200709D8009BD9D5 /* FJLeftViewController.m in Sources */,
 				838F86A220035A0A00E63475 /* FJTabBarViewController.m in Sources */,
 				838F86702003599400E63475 /* AppDelegate.m in Sources */,
+				FA48697A20103D1200EFEB9D /* UIBarButtonItem+Extension.m in Sources */,
 				838F86AB20035A7100E63475 /* ThirdViewController.m in Sources */,
 				FA3FE868200709C9009BD9D5 /* FJMainViewController.m in Sources */,
 			);

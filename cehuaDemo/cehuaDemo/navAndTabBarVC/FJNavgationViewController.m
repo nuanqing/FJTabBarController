@@ -9,6 +9,8 @@
 #import "FJNavgationViewController.h"
 #import "Macros.h"
 #import "FJTabBarViewController.h"
+#import "UIBarButtonItem+Extension.h"
+#import "FJMainViewController.h"
 
 @interface FJNavgationViewController ()<UINavigationControllerDelegate,UIGestureRecognizerDelegate>
 
@@ -18,10 +20,24 @@
 
 @implementation FJNavgationViewController
 
+#pragma mark - 初始化
+
++(void)initialize{
+    //导航栏颜色
+    [UINavigationBar appearance].barTintColor = FJNavColor;
+    //导航栏字体颜色
+    [UINavigationBar appearance].tintColor = [UIColor whiteColor];
+    //导航栏不透明
+    [UINavigationBar appearance].translucent = NO;
+    //导航标题
+    NSMutableDictionary *att = [NSMutableDictionary dictionary];
+    att[NSFontAttributeName] = [UIFont fontWithName:@"Arial-BoldMT" size:20];
+    att[NSForegroundColorAttributeName] = [UIColor whiteColor];
+    [[UINavigationBar appearance] setTitleTextAttributes:att];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.navigationBar.barTintColor = FJSystemColor;
-    [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
 }
 
 -(instancetype)initWithRootViewController:(UIViewController *)rootViewController {
@@ -31,20 +47,33 @@
     return nav;
 }
 
+#pragma mark - 重写push方法
+
 - (void)pushViewController:(UIViewController *)viewController animated:(BOOL)animated{
+    FJMainViewController *mainVC = (FJMainViewController *)[UIApplication sharedApplication].keyWindow.rootViewController;
+    mainVC.panRecognizer.enabled = NO;
     self.interactivePopGestureRecognizer.enabled = NO;
-    if (self.viewControllers.count > 0) {
+    if (self.childViewControllers.count > 0) {
+        //设置导航栏的按钮
+        viewController.navigationItem.leftBarButtonItem = [UIBarButtonItem itemWithImageName:@"back" highImageName:nil target:self action:@selector(back)];
+        //二级以上页面隐藏tabBar
         viewController.hidesBottomBarWhenPushed = YES;
     }
+    
     [super pushViewController:viewController animated:YES];
 }
+
+#pragma mark - UINavigationControllerDelegate
 
 - (void)navigationController:(UINavigationController *)navigationController didShowViewController:(UIViewController *)viewController animated:(BOOL)animated {
     self.interactivePopGestureRecognizer.enabled = YES;
     
 }
 
+#pragma mark - UIGestureRecognizerDelegate
+
 - (BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer *)gestureRecognizer {
+     NSLog(@"%ld----%ld",self.childViewControllers.count,self.viewControllers.count);
     if (self.childViewControllers.count == 1) {
         return NO;
     }
@@ -67,19 +96,28 @@
         return NO;
     }
 }
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+
+#pragma mark - 返回事件
+
+- (void)back {
+    [self popViewControllerAnimated:YES];
 }
 
-/*
-#pragma mark - Navigation
+#pragma mark - 重写pop方法
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+-(UIViewController *)popViewControllerAnimated:(BOOL)animated{
+    //将要返回一级页面
+    if (self.childViewControllers.count == 2) {
+        FJMainViewController *mainVC = (FJMainViewController *)[UIApplication sharedApplication].keyWindow.rootViewController;
+        mainVC.panRecognizer.enabled = YES;
+    }
+    [super popViewControllerAnimated:animated];
+    return self.topViewController;
 }
-*/
 
 @end
+
+
+
+
+

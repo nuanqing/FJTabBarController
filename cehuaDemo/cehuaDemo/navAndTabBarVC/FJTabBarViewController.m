@@ -25,14 +25,15 @@
     
 }
 
+#pragma mark - 控制器
+
 - (void)setupControllers{
     NSArray *ChildControlArray = @[@"FirstViewController",@"SecondViewController",@"ThirdViewController"];
-    //快速创建一个空的数组
+    
     NSMutableArray *vcs=[[NSMutableArray alloc]init];
     for (int i=0; i<ChildControlArray.count; i++) {
         Class class=NSClassFromString(ChildControlArray[i]);
         UIViewController *vc=[[class alloc]init];
-        //全部加导航
         FJNavgationViewController *nvc=[[FJNavgationViewController alloc]initWithRootViewController:vc];
         [vcs addObject:nvc];
     }
@@ -40,7 +41,10 @@
     self.selectedIndex = 1;
 }
 
+#pragma mark - 自定义tabBar
+
 - (void)setupTabBar{
+    //kvc的方式替换系统tabBar
     [self setValue:self.customTabBar forKey:@"tabBar"];
 }
 
@@ -51,6 +55,8 @@
     }
     return _customTabBar;
 }
+
+#pragma mark - tabBarDelegate
 
 - (void)selectBtn:(NSInteger)index{
     self.selectedIndex = index;

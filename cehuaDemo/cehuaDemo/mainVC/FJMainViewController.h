@@ -13,6 +13,9 @@
 
 @interface FJMainViewController : UIViewController
 
+@property (nonatomic,assign) BOOL isOpendLeftVC;
+@property (nonatomic,strong) UIPanGestureRecognizer *panRecognizer;
+
 - (void)showLeftVC;
 
 - (void)closeLeftVC;

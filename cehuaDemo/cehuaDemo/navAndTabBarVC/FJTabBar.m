@@ -23,17 +23,11 @@
 - (void)layoutSubviews{
     [super layoutSubviews];
     self.tabBarView.frame = self.bounds;
-    NSLog(@"%@",NSStringFromCGRect(self.bounds));
     // 把tabBarView带到最前面，覆盖tabBar的内容
     [self bringSubviewToFront:self.tabBarView];
 }
 
-- (FJTabBarView *)tabBarView{
-    if (!_tabBarView) {
-        _tabBarView = [[FJTabBarView alloc]init];
-    }
-    return _tabBarView;
-}
+#pragma mark - 重写hitTest方法
 
 - (UIView *)hitTest:(CGPoint)point withEvent:(UIEvent *)event
 {
@@ -50,10 +44,19 @@
         }else{//如果点不在发布按钮身上，直接让系统处理就可以了
             return [super hitTest:point withEvent:event];
         }
-    }
-    else {//tabbar隐藏了，那么说明已经push到其他的页面了，这个时候还是让系统去判断最合适的view处理就好了
+    }else{
+        //tabbar隐藏了，那么说明已经push到其他的页面了，这个时候还是让系统去判断最合适的view处理就好了
         return [super hitTest:point withEvent:event];
     }
+}
+
+#pragma mark - 懒加载
+
+- (FJTabBarView *)tabBarView{
+    if (!_tabBarView) {
+        _tabBarView = [[FJTabBarView alloc]init];
+    }
+    return _tabBarView;
 }
 
 @end

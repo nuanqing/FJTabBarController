@@ -35,7 +35,7 @@
     //普通情况下
     NSArray *images=@[@"leftN_icon",@"centerN_icon",@"rightN_icon"];
     //选中状态
-    NSArray *Selectimages=[[NSArray alloc]initWithObjects:@"leftS_icon",@"centerS_icon",@"rightS_icon", nil];
+    NSArray *selectImages=[[NSArray alloc]initWithObjects:@"leftS_icon",@"centerS_icon",@"rightS_icon", nil];
     NSArray *titleArray = @[@"消息",@"首页",@"我"];
     //摆放按钮
     float width=FJWidth/3.0f;
@@ -62,8 +62,8 @@
         //给button添加图片
         [button setImage:[UIImage imageNamed:images[i]] forState:UIControlStateNormal];
         [button setImage:[UIImage imageNamed:images[i]] forState:UIControlStateHighlighted];
-        [button setImage:[UIImage imageNamed:Selectimages[i]] forState:UIControlStateSelected];
-        [button setImage:[UIImage imageNamed:Selectimages[i]] forState:UIControlStateSelected|UIControlStateHighlighted];
+        [button setImage:[UIImage imageNamed:selectImages[i]] forState:UIControlStateSelected];
+        [button setImage:[UIImage imageNamed:selectImages[i]] forState:UIControlStateSelected|UIControlStateHighlighted];
         
         button.selected =i== 1;
         self.lastSelectedIndex = 11;
@@ -71,6 +71,9 @@
         [self addSubview:title];
     }
 }
+
+#pragma mark - 点击事件
+
 -(void)buttonaction:(UIButton *)button
 {
     NSLog(@"%ld",button.tag);
