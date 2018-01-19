@@ -15,11 +15,14 @@
 
 @property (nonatomic,assign) BOOL isOpendLeftVC;
 @property (nonatomic,strong) UIPanGestureRecognizer *panRecognizer;
+@property (nonatomic,strong) UIViewController *tabBarVC;
+@property (nonatomic,strong) UIViewController *leftVC;
 
 - (void)showLeftVC;
 
 - (void)closeLeftVC;
 
+- (instancetype)initWithLeftVC:(UIViewController *)leftVC mainVC:(UIViewController *)mainVC;
 
 @end
 

@@ -7,17 +7,81 @@
 //
 
 #import "FJLeftViewController.h"
+#import "FourthViewController.h"
+#import "SecondViewController.h"
+#import "FJTabBarViewController.h"
+#import "FJNavgationViewController.h"
+#import "FJMainViewController.h"
+#import "Macros.h"
 
-@interface FJLeftViewController ()
+static NSString *ideitifier = @"Cell";
+
+@interface FJLeftViewController ()<UITableViewDelegate,UITableViewDataSource>
+
+@property (nonatomic,strong)UITableView *tableView;
 
 @end
 
 @implementation FJLeftViewController
 
+//手动赋值给self.view大小
+- (void)loadView{
+    UIView *view = [[UIView alloc]init];
+    view.frame = CGRectMake(-(fj_leftVCScale/2*FJWidth), 0, fj_leftVCScale*FJWidth, FJHeight);
+    self.view = view;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.view.backgroundColor = [UIColor cyanColor];
-   
+    NSLog(@"dd");
+    self.view.backgroundColor = [UIColor whiteColor];
+    [self setupUI];
+}
+
+- (void)setupUI{
+    [self.view addSubview:self.tableView];
+    [_tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:ideitifier];
+    _tableView.estimatedRowHeight = 50;
+    _tableView.tableHeaderView = nil;
+}
+
+#pragma mark - UItableViewDataSource
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    return 20;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:ideitifier];
+    cell.textLabel.text = @"点击跳转";
+    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+    return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    //closeLeftVC方法
+    FourthViewController *fvc = [[FourthViewController alloc]init];
+    FJTabBarViewController *tvc = (FJTabBarViewController *)[self mainViewController].tabBarVC;
+    FJNavgationViewController *nvc = tvc.selectedViewController;
+    [nvc pushViewController:fvc animated:NO];
+    [[self mainViewController]closeLeftVC];
+}
+
+- (UITableView *)tableView{
+    if (!_tableView) {
+        _tableView = [[UITableView alloc]init];
+        _tableView.frame = self.view.bounds;
+        NSLog(@"2%@",NSStringFromCGRect(self.view.bounds));
+        _tableView.showsVerticalScrollIndicator = NO;
+        _tableView.showsHorizontalScrollIndicator = NO;
+        _tableView.delegate = self;
+        _tableView.dataSource = self;
+    }
+    return _tableView;
+}
+
+- (void)viewWillAppear:(BOOL)animated{
+    
 }
 
 

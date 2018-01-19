@@ -20,7 +20,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.navigationItem.title = @"首页";
-    self.view.backgroundColor = [UIColor blueColor];
+    self.view.backgroundColor = [UIColor whiteColor];
     
     [self setupUI];
 }
@@ -33,12 +33,9 @@
 }
 
 - (void)click:(UIButton *)btn{
-    FJMainViewController *fvc = [self mainViewController];
-    if (!fvc.isOpendLeftVC) {
-        [[self mainViewController] showLeftVC];
-    }else{
-        [[self mainViewController] closeLeftVC];
-    }
+    //因为有蒙版所以不需要关闭的方法
+    [[self mainViewController] showLeftVC];
+    
     
 }
 

@@ -10,6 +10,7 @@
 #import "FJTabBarViewController.h"
 #import "FJMainViewController.h"
 #import "FJLeftViewController.h"
+#import "FJNavgationViewController.h"
 
 @interface AppDelegate ()
 
@@ -27,7 +28,11 @@
     self.window = [[UIWindow alloc]init];
     self.window.frame = [UIScreen mainScreen].bounds;
     self.window.backgroundColor = [UIColor whiteColor];
-    FJMainViewController *mvc = [[FJMainViewController alloc]init];
+    FJLeftViewController *leftVC=[[FJLeftViewController alloc]init];
+    //可以加导航，也可以不加
+    FJNavgationViewController *leftNVC = [[FJNavgationViewController alloc]initWithRootViewController:leftVC];
+    FJTabBarViewController *tabBarVC =[[FJTabBarViewController alloc]init];
+    FJMainViewController *mvc = [[FJMainViewController alloc]initWithLeftVC:leftNVC mainVC:tabBarVC];
     self.window.rootViewController = mvc;
     [self.window makeKeyAndVisible];
 }

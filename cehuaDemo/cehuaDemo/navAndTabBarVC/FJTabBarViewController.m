@@ -12,6 +12,8 @@
 
 @interface FJTabBarViewController ()<FJTabBarDelegate,UINavigationControllerDelegate>
 
+@property (nonatomic,copy) NSArray *childControlArray;
+
 @end
 
 @implementation FJTabBarViewController
@@ -19,20 +21,23 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-   
+    [self setupArray];
     [self setupTabBar];
     [self setupControllers];
     
 }
 
+- (void)setupArray{
+    self.childControlArray = @[@"FirstViewController",@"SecondViewController",@"ThirdViewController"].copy;
+}
+
 #pragma mark - 控制器
 
 - (void)setupControllers{
-    NSArray *ChildControlArray = @[@"FirstViewController",@"SecondViewController",@"ThirdViewController"];
     
     NSMutableArray *vcs=[[NSMutableArray alloc]init];
-    for (int i=0; i<ChildControlArray.count; i++) {
-        Class class=NSClassFromString(ChildControlArray[i]);
+    for (int i=0; i<_childControlArray.count; i++) {
+        Class class=NSClassFromString(_childControlArray[i]);
         UIViewController *vc=[[class alloc]init];
         FJNavgationViewController *nvc=[[FJNavgationViewController alloc]initWithRootViewController:vc];
         [vcs addObject:nvc];

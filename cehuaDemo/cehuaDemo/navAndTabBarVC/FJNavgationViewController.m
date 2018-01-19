@@ -60,7 +60,7 @@
         viewController.hidesBottomBarWhenPushed = YES;
     }
     
-    [super pushViewController:viewController animated:YES];
+    [super pushViewController:viewController animated:animated];
 }
 
 #pragma mark - UINavigationControllerDelegate
