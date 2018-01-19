@@ -179,6 +179,7 @@
     }
     if (isHidden) {
         _maskView.hidden = YES;
+        _maskView.alpha = 0;
         _maskView.frame = CGRectMake(0, 0, FJWidth, FJHeight);
         
     }

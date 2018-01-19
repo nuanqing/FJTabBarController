@@ -25,6 +25,7 @@
 		FA48697A20103D1200EFEB9D /* UIBarButtonItem+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = FA48697820103D1200EFEB9D /* UIBarButtonItem+Extension.m */; };
 		FA48697D20103DDE00EFEB9D /* UIView+frame.m in Sources */ = {isa = PBXBuildFile; fileRef = FA48697C20103DDE00EFEB9D /* UIView+frame.m */; };
 		FA48698020103EFE00EFEB9D /* UIFont+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = FA48697E20103EFE00EFEB9D /* UIFont+Extension.m */; };
+		FA4869862011DB8E00EFEB9D /* FJHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = FA4869852011DB8E00EFEB9D /* FJHeaderView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -84,6 +85,8 @@
 		FA48697C20103DDE00EFEB9D /* UIView+frame.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIView+frame.m"; sourceTree = "<group>"; };
 		FA48697E20103EFE00EFEB9D /* UIFont+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIFont+Extension.m"; sourceTree = "<group>"; };
 		FA48697F20103EFE00EFEB9D /* UIFont+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIFont+Extension.h"; sourceTree = "<group>"; };
+		FA4869842011DB8E00EFEB9D /* FJHeaderView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FJHeaderView.h; sourceTree = "<group>"; };
+		FA4869852011DB8E00EFEB9D /* FJHeaderView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FJHeaderView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -211,6 +214,8 @@
 			children = (
 				FA3FE869200709D8009BD9D5 /* FJLeftViewController.h */,
 				FA3FE86A200709D8009BD9D5 /* FJLeftViewController.m */,
+				FA4869842011DB8E00EFEB9D /* FJHeaderView.h */,
+				FA4869852011DB8E00EFEB9D /* FJHeaderView.m */,
 			);
 			path = leftVC;
 			sourceTree = "<group>";
@@ -372,6 +377,7 @@
 				838F86A220035A0A00E63475 /* FJTabBarViewController.m in Sources */,
 				838F86702003599400E63475 /* AppDelegate.m in Sources */,
 				FA48697A20103D1200EFEB9D /* UIBarButtonItem+Extension.m in Sources */,
+				FA4869862011DB8E00EFEB9D /* FJHeaderView.m in Sources */,
 				838F86AB20035A7100E63475 /* ThirdViewController.m in Sources */,
 				FA3FE868200709C9009BD9D5 /* FJMainViewController.m in Sources */,
 			);

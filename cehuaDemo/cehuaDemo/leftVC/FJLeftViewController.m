@@ -12,13 +12,15 @@
 #import "FJTabBarViewController.h"
 #import "FJNavgationViewController.h"
 #import "FJMainViewController.h"
+#import "FJHeaderView.h"
 #import "Macros.h"
 
 static NSString *ideitifier = @"Cell";
 
 @interface FJLeftViewController ()<UITableViewDelegate,UITableViewDataSource>
 
-@property (nonatomic,strong)UITableView *tableView;
+@property (nonatomic,strong) UITableView *tableView;
+@property (nonatomic,strong) FJHeaderView *headerView;
 
 @end
 
@@ -41,8 +43,8 @@ static NSString *ideitifier = @"Cell";
 - (void)setupUI{
     [self.view addSubview:self.tableView];
     [_tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:ideitifier];
-    _tableView.estimatedRowHeight = 50;
-    _tableView.tableHeaderView = nil;
+    _tableView.rowHeight = 50;
+    _tableView.tableHeaderView = self.headerView;
 }
 
 #pragma mark - UItableViewDataSource
@@ -67,6 +69,8 @@ static NSString *ideitifier = @"Cell";
     [[self mainViewController]closeLeftVC];
 }
 
+#pragma mark - 懒加载
+
 - (UITableView *)tableView{
     if (!_tableView) {
         _tableView = [[UITableView alloc]init];
@@ -78,6 +82,14 @@ static NSString *ideitifier = @"Cell";
         _tableView.dataSource = self;
     }
     return _tableView;
+}
+
+- (FJHeaderView *)headerView{
+    if (!_headerView) {
+        _headerView = [[FJHeaderView alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 200)];
+        _headerView.backgroundColor = FJNavColor;
+    }
+    return _headerView;
 }
 
 - (void)viewWillAppear:(BOOL)animated{
